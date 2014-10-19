@@ -74,7 +74,7 @@ class StreamSocketClient
     /**
      * Initializes socket-client
      *
-     * @param string  $scheme like "udp" or "tcp"
+     * @param string  $scheme  like "udp" or "tcp"
      * @param string  $host
      * @param integer $port
      * @param array   $context
@@ -169,7 +169,7 @@ class StreamSocketClient
     }
 
     /**
-     * Closes underlying socket explicitly 
+     * Closes underlying socket explicitly
      */
     public function close()
     {

@@ -127,6 +127,7 @@ class HttpTransport extends AbstractTransport
         } while (false === strpos($chunk, $delimiter) && strlen($chunk) > 0);
 
         $elements = explode($delimiter, $response, 2);
+
         return $elements[0];
     }
 }
