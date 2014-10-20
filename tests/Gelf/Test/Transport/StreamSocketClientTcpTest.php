@@ -12,7 +12,7 @@
 namespace Gelf\Test\Transport;
 
 use Gelf\Transport\StreamSocketClient;
-use PHPUnit_Framework_TestCase as TestCase;
+use Gelf\TestCase;
 
 class StreamSocketClientTcpTest extends TestCase
 {
@@ -186,15 +186,20 @@ class StreamSocketClientTcpTest extends TestCase
         $this->assertEquals("efgh", fread($client2, 4));
     }
 
+    /**
+     * @group hhvm-failures
+     */
     public function testStreamContext()
     {
+        $this->failsOnHHVM();
+
         $testName = '127.0.0.1:12345';
         $context = array(
             'socket' => array(
                 'bindto' => $testName
             )
         );
-
+        
         $client = new StreamSocketClient("tcp", $this->host, $this->port, $context);
         $this->assertEquals($testName, stream_socket_get_name($client->getSocket(), false));
         $this->assertNotEquals($testName, stream_socket_get_name($this->socketClient->getSocket(), false));

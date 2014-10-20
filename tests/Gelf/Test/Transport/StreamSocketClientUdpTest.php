@@ -12,7 +12,7 @@
 namespace Gelf\Test\Transport;
 
 use Gelf\Transport\StreamSocketClient;
-use PHPUnit_Framework_TestCase as TestCase;
+use Gelf\TestCase;
 
 class StreamSocketClientUdpTest extends TestCase
 {
@@ -83,17 +83,14 @@ class StreamSocketClientUdpTest extends TestCase
 
         $this->assertEquals($testData, $readData);
     }
-
+    
+    /**
+     * @expectedException \RuntimeException
+     * @group hhvm-failures
+     */
     public function testInvalidWrite()
     {
-        if (defined('HHVM_VERSION')) {
-            // HHVM's fwrite behaves differently than PHP's as of 2014-10-15:
-            // No exception will be thrown
-        } else {
-            $this->setExpectedException('\RuntimeException');
-
-        }
-
+        $this->failsOnHHVM();
         $this->socketClient->write(array());
     }
 
