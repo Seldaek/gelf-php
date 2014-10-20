@@ -48,6 +48,11 @@ class HttpTransport extends AbstractTransport
     protected $socketClient;
 
     /**
+     * @var SslOptions|null
+     */
+    protected $sslOptions = null;
+
+    /**
      * Class constructor
      *
      * @param string $host when NULL or empty default-host is used
