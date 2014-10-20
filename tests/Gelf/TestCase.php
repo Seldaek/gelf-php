@@ -4,7 +4,7 @@ namespace Gelf;
 
 abstract class TestCase extends \PHPUnit_Framework_TestCase
 {
-    
+
     public function failsOnHHVM()
     {
         if (defined('HHVM_VERSION') && !getenv('FORCE_HHVM_TESTS')) {
@@ -12,4 +12,3 @@ abstract class TestCase extends \PHPUnit_Framework_TestCase
         }
     }
 }
-

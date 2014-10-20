@@ -199,7 +199,7 @@ class StreamSocketClientTcpTest extends TestCase
                 'bindto' => $testName
             )
         );
-        
+
         $client = new StreamSocketClient("tcp", $this->host, $this->port, $context);
         $this->assertEquals($testName, stream_socket_get_name($client->getSocket(), false));
         $this->assertNotEquals($testName, stream_socket_get_name($this->socketClient->getSocket(), false));

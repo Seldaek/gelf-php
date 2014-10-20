@@ -83,7 +83,7 @@ class StreamSocketClientUdpTest extends TestCase
 
         $this->assertEquals($testData, $readData);
     }
-    
+
     /**
      * @expectedException \RuntimeException
      * @group hhvm-failures
